@@ -17,8 +17,7 @@ class Field:
 class Record:
     def __init__(self, name, phone=None, b_date=None):
         self.name = name
-        self.phone = phone
-        self.phones = [phone] if phone else []
+        self.phones = []
         self.b_date = b_date
 
     def add_phone(self, phone):
@@ -155,7 +154,6 @@ def change_contacts_dict(*args):
     record.change_phone(0, phone)
     return f'You have changed the number to this one: {phone} in the contact with the name: {name}'
 
-
 @input_error
 def phone_func(*args):
     name = args[0]
@@ -165,7 +163,6 @@ def phone_func(*args):
             if name == key:
                 return f"{name}: {', '.join(str(phone) for phone in record.phones)}"
     raise KeyError
-
 
 def show_all_func(*args):
     if len(contacts.data) == 0:
